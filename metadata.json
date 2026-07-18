@@ -1,0 +1,6 @@
+{
+  "name": "IT Guide Portal",
+  "description": "A multi-category IT Guide & Knowledge Base Portal featuring structured guide management, step-by-step instructions with custom steps, and password-protected administrative controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
