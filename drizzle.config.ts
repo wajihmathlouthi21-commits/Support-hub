@@ -1,10 +1,9 @@
-import { defineConfig } from 'drizzle-kit';
+import type { Config } from 'drizzle-kit';
 
-export default defineConfig({
-  schema: './src/db/schema.ts', 
+export default {
+  schema: './src/db/schema.ts',
   out: './drizzle',
-  driver: 'libsql', // أو قم بحذف هذا السطر تماماً إذا كنت تستخدم ملف local فقط
   dbCredentials: {
-    connectionString: 'sqlite.db'
-  }
-});
+    url: 'sqlite.db',
+  },
+} satisfies Config;
