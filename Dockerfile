@@ -1,19 +1,20 @@
+# 1. تحديد إصدار Node.js (استخدم نفس الإصدار الذي يعمل عندك محلياً)
 FROM node:20-alpine
 
+# 2. تحديد مجلد العمل داخل الحاوية
 WORKDIR /app
 
-# Install dependencies
+# 3. نسخ ملفات التعريف الخاصة بالحزم أولاً للاستفادة من الكاش
 COPY package*.json ./
-RUN npm install
 
-# Copy source code
+# 4. تثبيت الحزم مع تخطي مشاكل الصلاحيات وبناء البيئة النظيفة
+RUN npm ci --unsafe-perm || npm install --unsafe-perm
+
+# 5. نسخ بقية ملفات المشروع
 COPY . .
 
-# Build the application (Vite client + Express server)
+# 6. بناء المشروع (إذا كان يعتمد على Vite أو React للبناء)
 RUN npm run build
 
-# Expose the port
-EXPOSE 3000
-
-# Start the application and push DB schema first
-CMD ["sh", "-c", "npm run db:push && npm start"]
+# 7. تحديد أمر التشغيل الافتراضي
+CMD ["npm", "start"]
