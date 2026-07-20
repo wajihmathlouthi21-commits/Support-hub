@@ -3,8 +3,8 @@ import { defineConfig } from 'drizzle-kit';
 export default defineConfig({
   schema: './src/db/schema.ts', 
   out: './drizzle',
-  dialect: 'sqlite',
+  driver: 'libsql', // أو قم بحذف هذا السطر تماماً إذا كنت تستخدم ملف local فقط
   dbCredentials: {
-    url: process.env.DB_PATH || 'sqlite.db', 
-  },
+    connectionString: 'sqlite.db'
+  }
 });
